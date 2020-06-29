@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Dogs;
@@ -20,11 +21,23 @@ public class DogService {
 	}
 	
 	
+	public boolean checkIfDogExists( String breed, 
+			String nameofdog, 
+			String ownerfirstname, 
+			String ownerlastname) {
+		Dogs val = dogRepository.findByBreedUnique(breed, 
+				nameofdog, ownerfirstname, ownerlastname);
+		if(val != null)
+			return true;
+		
+		return false;
+	}
+	
 	public List<Dogs> getAll(){
 		return dogRepository.findAll();
 	}
 	
-	public Optional<Dogs> getByNameofDog(Integer id) {
+	public Optional<Dogs> getByIdofDog(Integer id) {
 		return dogRepository.findById(id);
 	}
 	
