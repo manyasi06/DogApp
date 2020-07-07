@@ -2,12 +2,14 @@ package com.example.demo.controller;
 
 import java.util.List;
 
+import org.apache.commons.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,14 +33,25 @@ public class DogController {
 	
 	
 	@GetMapping("/dogs")
-	public List<Dogs> getAllDogs(){	
+	public ResponseEntity<List<Dogs>> getAllDogs(){	
 		List<Dogs> myl = dogService.getAll();
-		return myl;
+		return new ResponseEntity<List<Dogs>>(myl,HttpStatus.ACCEPTED);
 	}
 	
 	@DeleteMapping("dogs/{id}")
-	public void deleteDog(@RequestParam(required = true)int id ) {
-		dogService.removeDog(id);
+	public ResponseEntity<String> deleteDog(@PathVariable(name = "id")int id ) {
+		
+		Log L = null;
+		try {
+			dogService.removeDog(id);
+		} catch (Exception e) {
+			// TODO: handle exception
+			L.error(e.getMessage());
+			return new ResponseEntity<String>("No user exists",HttpStatus.NOT_FOUND);
+		}
+		
+		return new ResponseEntity<String>("Success",HttpStatus.OK);
+		
 	}
 	
 	
