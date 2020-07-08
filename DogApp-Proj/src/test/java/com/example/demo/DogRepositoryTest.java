@@ -40,6 +40,11 @@ public class DogRepositoryTest {
 			.contains(d1,d2,d3);
 	}
 	
+	@Test
+	public void testFindById() {
+		//Todo
+	}
+	
 	
 	@Test
 	void testDogsModel() {
