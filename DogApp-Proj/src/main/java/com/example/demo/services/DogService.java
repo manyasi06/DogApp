@@ -49,6 +49,10 @@ public class DogService {
 		dogRepository.save(dog);
 	}
 	
+	public void editDog(Dogs newDog) {
+		dogRepository.saveAndFlush(newDog);
+	}
+	
 	
 	
 	
