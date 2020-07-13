@@ -37,7 +37,7 @@ public class DogController {
 	}
 
 	@DeleteMapping("dogs/{id}")
-	public ResponseEntity<String> deleteDog(@PathVariable(name = "id") int id) {
+	public ResponseEntity<HttpStatus> deleteDog(@PathVariable(name = "id") int id) {
 
 		Log L = null;
 		try {
@@ -45,10 +45,10 @@ public class DogController {
 		} catch (Exception e) {
 			// TODO: handle exception
 			L.error(e.getMessage());
-			return new ResponseEntity<String>("No user exists", HttpStatus.NOT_FOUND);
+			return new ResponseEntity<HttpStatus>( HttpStatus.NOT_FOUND);
 		}
 
-		return new ResponseEntity<String>("Success", HttpStatus.OK);
+		return new ResponseEntity<HttpStatus>(HttpStatus.OK);
 
 	}
 
