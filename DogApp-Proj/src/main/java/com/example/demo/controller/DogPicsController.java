@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,18 +18,18 @@ import com.example.demo.model.DogPics;
 import com.example.demo.services.DogPicsService;
 
 @RestController
-@RequestMapping(name = "/api")
+@RequestMapping(path = "/api")
 public class DogPicsController {
 	
 	@Autowired
 	DogPicsService photoService;
 	
 	@PostMapping("/photos/add")
-	public String addPhoto(@RequestParam("title") String title, 
-	  @RequestParam("image") MultipartFile image, Model model) 
+	public String addPhoto(@RequestPart("title") String title, 
+	  @RequestPart("image") MultipartFile image, Model model) 
 	  throws IOException {
 	    String id = photoService.addPhoto(title, image);
-	    return "redirect:/photos/" + id;
+	    return id;
 	}
 	
 	@GetMapping("/photos/{id}")

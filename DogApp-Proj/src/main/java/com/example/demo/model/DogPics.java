@@ -6,7 +6,7 @@ import org.bson.types.Binary;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "${collections}")
+@Document(collection = "springboot-mongo")
 public class DogPics {
 
 	@Id
