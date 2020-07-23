@@ -55,8 +55,7 @@ public class DogController {
 	@PostMapping("/dogs")
 	public ResponseEntity<String> createDog(@RequestBody Dogs dog) {
 
-		if (dogService.checkIfDogExists(dog.getBreed(), dog.getNameOfDog(), dog.getOwnerfirstname(),
-				dog.getOwnerlastname()) == true) {
+		if (dogService.checkIfDogExists(dog.getBreed(), dog.getNameOfDog()) == true) {
 			System.out.println("This already exists");
 			ResponseEntity<String> ret = new ResponseEntity<String>("Owner Exists", HttpStatus.CONFLICT);
 			return ret;

@@ -22,11 +22,9 @@ public class DogService {
 	
 	
 	public boolean checkIfDogExists( String breed, 
-			String nameofdog, 
-			String ownerfirstname, 
-			String ownerlastname) {
+			String nameofdog) {
 		Dogs val = dogRepository.findByBreedUnique(breed, 
-				nameofdog, ownerfirstname, ownerlastname);
+				nameofdog);
 		if(val != null)
 			return true;
 		

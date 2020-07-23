@@ -9,11 +9,8 @@ import com.example.demo.model.Dogs;
 
 @Repository
 public interface DogRepository extends JpaRepository<Dogs, Integer> {
-	@Query(value = "SELECT * FROM dogs  u WHERE u.breed= :breed and u.nameofdog= :nameofdog"
-			+ " and u.ownerfirstname= :ownerfirstname and u.ownerlastname= :ownerlastname",
+	@Query(value = "SELECT * FROM dogs  u WHERE u.breed= :breed and u.nameofdog= :nameofdog",
 			nativeQuery = true)
 	public Dogs findByBreedUnique( @Param("breed")String breed, 
-			@Param("nameofdog")String nameofdog, 
-			@Param("ownerfirstname")String ownerfirstname, 
-			@Param("ownerlastname") String ownerlastname);
+			@Param("nameofdog")String nameofdog);
 }
