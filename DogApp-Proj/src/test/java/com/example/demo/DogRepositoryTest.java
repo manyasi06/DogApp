@@ -24,21 +24,7 @@ public class DogRepositoryTest {
 	@Mock
 	private DogRepository mockDogRepository;
 	
-	@Test
-	public void testAddDogRepositoryFindAll() {
 	
-		
-		Dogs d1 = new Dogs(1,"Doodle","Beany","Frank","Gore");
-		Dogs d2 = new Dogs(2,"Doodle","Julie","Cole","Lee");
-		Dogs d3 = new Dogs(3,"Doodle","Keenie","Leo","Messi");
-		List<Dogs> myL = Arrays.asList(d1,d2,d3);
-		
-		when(mockDogRepository.findAll()).thenReturn(myL);
-		
-		//assertArrayEquals(mockDogRepository.findAll(), myL);
-		Assertions.assertThat(mockDogRepository.findAll())
-			.contains(d1,d2,d3);
-	}
 	
 	@Test
 	public void testFindById() {

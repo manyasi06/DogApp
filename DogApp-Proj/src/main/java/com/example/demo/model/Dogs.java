@@ -1,9 +1,12 @@
 package com.example.demo.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.springframework.stereotype.Component;
 
@@ -17,16 +20,16 @@ public class Dogs {
 	private Integer id;
 	private String breed;
 	private String nameofdog;
-	private String ownerfirstname;
-	private String ownerlastname;
 	
-	public Dogs(Integer id, String breed, String nameofdog, String ownerfirstname, String ownerlastname) {
-		super();
-		this.id = id;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "person_id", referencedColumnName = "id")
+	private Person person;
+	
+	public Dogs( String breed, String nameofdog) 
+	{	
 		this.breed = breed;
 		this.nameofdog = nameofdog;
-		this.ownerfirstname = ownerfirstname;
-		this.ownerlastname = ownerlastname;
+		
 	}
 	
 
@@ -66,24 +69,7 @@ public class Dogs {
 	}
 
 
-	public String getOwnerfirstname() {
-		return ownerfirstname;
-	}
-
-
-	public void setOwnerfirstname(String ownerfirstname) {
-		this.ownerfirstname = ownerfirstname;
-	}
-
-
-	public String getOwnerlastname() {
-		return ownerlastname;
-	}
-
-
-	public void setOwnerlastname(String ownerlastname) {
-		this.ownerlastname = ownerlastname;
-	}
+	
 	
 	
 
