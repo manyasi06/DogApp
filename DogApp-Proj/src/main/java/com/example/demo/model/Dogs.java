@@ -32,10 +32,31 @@ public class Dogs {
 		
 	}
 	
+	public Dogs( Integer id, String breed, String nameofdog) 
+	{	
+		this.id = id;
+		this.breed = breed;
+		this.nameofdog = nameofdog;
+		
+	}
+	
+
+	
+
+	public Dogs(Integer id, String breed, String nameofdog, Person person) {
+		super();
+		this.id = id;
+		this.breed = breed;
+		this.nameofdog = nameofdog;
+		this.person = person;
+	}
 
 	public Dogs() {
 		// TODO Auto-generated constructor stub
 	}
+
+
+	
 
 
 	public Integer getId() {
@@ -66,6 +87,11 @@ public class Dogs {
 
 	public void setNameOfDog(String nameOfDog) {
 		this.nameofdog = nameOfDog;
+	}
+
+	@Override
+	public String toString() {
+		return "Dogs [id=" + id + ", breed=" + breed + ", nameofdog=" + nameofdog + ", person=" + person + "]";
 	}
 
 
