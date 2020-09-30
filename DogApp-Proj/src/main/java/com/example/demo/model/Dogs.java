@@ -40,8 +40,17 @@ public class Dogs {
 		
 	}
 	
-
 	
+
+	public Dogs(String breed, String nameofdog, Person person) {
+		super();
+		
+		this.breed = breed;
+		this.nameofdog = nameofdog;
+		this.person = person;
+	}
+	
+
 
 	public Dogs(Integer id, String breed, String nameofdog, Person person) {
 		super();

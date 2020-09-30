@@ -1,6 +1,6 @@
 package com.example.demo.dogtests;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import junit.framework.*;
 
 import java.util.ArrayList;
 import java.util.*;
@@ -49,8 +49,8 @@ public class DogControllerTests {
 		List<Dogs> shoul = this.createMockDogsList();
 		System.out.println(shoul);
 		Dogs[] returnedVal = this.restTemplate.getForObject("http://localhost:" + port + "/api/dogs",Dogs[].class);
-//		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/api/dogs",
-//				Dogs[].class)).containsAll(shoul);
+		
+		returnedVal.equals(shoul);
 		System.out.println(returnedVal);
 		
 		
