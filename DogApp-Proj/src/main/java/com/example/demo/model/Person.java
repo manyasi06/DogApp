@@ -41,6 +41,12 @@ public class Person {
 		this.lastname = lastname;
 	}
 
+	public Person(String firstname, String lastname) {
+		// TODO Auto-generated constructor stub
+		this.firstname = firstname;
+		this.lastname = lastname;
+	}
+
 	public long getId() {
 		return id;
 	}
