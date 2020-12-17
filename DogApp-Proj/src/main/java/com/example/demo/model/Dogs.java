@@ -21,7 +21,7 @@ public class Dogs {
 	private String breed;
 	private String nameofdog;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "person_id", referencedColumnName = "id")
 	private Person person;
 	
