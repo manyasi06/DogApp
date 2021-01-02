@@ -9,6 +9,7 @@ CREATE TABLE persons (
 	`lastname` VARCHAR(25)
 );
 
+
 CREATE TABLE dogs (
 	`id` INT AUTO_INCREMENT PRIMARY KEY,
 	`breed` VARCHAR(250),
