@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity(name = "persons")
@@ -16,20 +17,19 @@ public class Person {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
+
 	private String firstname;
 	private String lastname;
 
-	@OneToMany(mappedBy = "person", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	@OneToMany( 
+			cascade = CascadeType.ALL, 
+			fetch = FetchType.EAGER,
+			targetEntity = Dogs.class )
+	@JoinColumn(name="person_id")
 	private Set<Dogs> dogs;
 
-	public Set<Dogs> getDogs() {
-		return dogs;
-	}
-
-	public void setDogs(Set<Dogs> dogs) {
-		this.dogs = dogs;
-	}
-
+	
 	public Person() {
 		super();
 	}
@@ -45,6 +45,14 @@ public class Person {
 		// TODO Auto-generated constructor stub
 		this.firstname = firstname;
 		this.lastname = lastname;
+	}
+	
+	public Person(long id, String firstname, String lastname, Set<Dogs> dogs) {
+		super();
+		this.id = id;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.dogs = dogs;
 	}
 
 	public long getId() {
@@ -70,5 +78,14 @@ public class Person {
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
+	
+	public Set<Dogs> getDogs() {
+		return dogs;
+	}
+
+	public void setDogs(Set<Dogs> dogs) {
+		this.dogs = dogs;
+	}
+
 
 }

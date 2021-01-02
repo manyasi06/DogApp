@@ -73,11 +73,17 @@ public class DogController {
 
 	@PutMapping("/dogs")
 	public ResponseEntity<String> editDogById(@RequestBody Dogs dog) {
+		System.out.println(dog.toString());
 		Optional<Dogs> oldDog = dogService.getByIdofDog(dog.getId());
 		if (oldDog == null) {
 			return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
 		}
-		dogService.editDog(dog);
+		try {
+			dogService.editDog(dog);
+		} catch (Exception e) {
+			System.out.println(e.getLocalizedMessage());
+		}
+		
 		return new ResponseEntity<String>(HttpStatus.ACCEPTED);
 
 	}
