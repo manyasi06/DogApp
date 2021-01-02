@@ -43,11 +43,7 @@ class DogRepositoryTests {
 		
 	}
 
-	@Test
-	void test() {
-		fail("Not yet implemented");
-	}
-	
+
 	@Test
 	void testgetAllDogs() {
 		when(mockedDogRepository.findAll()).thenReturn(myDogs);
