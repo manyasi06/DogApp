@@ -1,12 +1,14 @@
 DROP TABLE IF EXISTS dogs;
 DROP TABLE IF EXISTS persons;
 DROP TABLE IF EXISTS friendlist;
+DROP TABLE IF EXISTS persons_dog;
 
 CREATE TABLE persons (
 	`id` INT AUTO_INCREMENT PRIMARY KEY,
 	`firstname` VARCHAR(25),
 	`lastname` VARCHAR(25)
 );
+
 
 CREATE TABLE dogs (
 	`id` INT AUTO_INCREMENT PRIMARY KEY,
@@ -15,6 +17,14 @@ CREATE TABLE dogs (
 	`person_id` INT NOT NULL,
 	CONSTRAINT `items_ibfk_1` FOREIGN KEY(`person_id`) REFERENCES persons(`id`) ON DELETE CASCADE
 );
+
+CREATE TABLE person_dog(
+	`id` INT AUTO_INCREMENT PRIMARY KEY,
+	 `person_id` INT NOT NULL,
+	`dog_id` INT NOT NULL,
+	CONSTRAINT `person_iba_1` FOREIGN KEY(`person_id`) REFERENCES persons(`id`) ON DELETE CASCADE,
+	CONSTRAINT `dog_iba_1` FOREIGN KEY(`dog_id`) REFERENCES dogs(`id`) ON DELETE CASCADE
+	);
 
 CREATE TABLE friendlist(
 	`id` INT AUTO_INCREMENT PRIMARY KEY,
@@ -37,6 +47,9 @@ INSERT INTO dogs (breed, nameofdog, person_id) VALUES
 ('pyredoodle','Jake',3),
 ('poodle','Bryan',2),
 ('poodle','Jcole',3);
+
+INSERT INTO person_dog (person_id,dog_id) VALUES
+(1,1);
 
 
 
